@@ -1,0 +1,41 @@
+name: Tests for GitHub Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - change
+          - check
+          - http
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: change
+        if: "github.event.inputs.deployment_target == 'change'"
+        run: pytest -v -m change
+      - name: check
+        if: "github.event.inputs.deployment_target == 'check'"
+        run: pytest -v -m check
+      - name: http
+        if: "github.event.inputs.deployment_target == 'http'"
+        run: pytest -v -m http
+      - name: all
+        if: "github.event.inputs.deployment_target == 'all'"
+        run: pytest -v
