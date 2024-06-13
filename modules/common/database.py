@@ -39,6 +39,19 @@ class DataBase:
 
         return record
 
+    def select_product_by_id(self, product_id):
+        query = f"SELECT id, name, description, quantity FROM products WHERE id = {product_id}"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+
+        return record
+
+    def insert_new_product_without_replace(self, product_id, name, description, qnt):
+        query = f"INSERT INTO products (id, name, description, quantity) " \
+                f"VALUES ({product_id}, '{name}', '{description}', {qnt})"
+        self.cursor.execute(query)
+        self.connection.commit()
+
     def insert_new_product(self, product_id, name, description, qnt):
         query = f"INSERT OR REPLACE INTO products (id, name, description, quantity) " \
                 f"VALUES ({product_id}, '{name}', '{description}', {qnt})"
