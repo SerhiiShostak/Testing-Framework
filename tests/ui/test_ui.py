@@ -9,8 +9,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.mark.ui
 def test_check_incorrect_username():
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
     driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install())
+        service=Service(ChromeDriverManager().install()), options=options
     )
 
     driver.get("https://github.com/login")
@@ -27,5 +29,3 @@ def test_check_incorrect_username():
     assert driver.title == 'Sign in to GitHub · GitHub'
 
     driver.close()
-
-# commit
