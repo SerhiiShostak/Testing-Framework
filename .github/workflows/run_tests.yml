@@ -15,6 +15,7 @@ on:
           - http
           - api
           - database
+          - ui
 
 jobs:
   test:
@@ -44,7 +45,7 @@ jobs:
       - name: database
         if: "github.event.inputs.deployment_target == 'database'"
         run: pytest -v -m database
-      - name: database
+      - name: ui
         if: "github.event.inputs.deployment_target == 'ui'"
         run: pytest -v -m ui
       - name: all
