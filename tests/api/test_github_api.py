@@ -17,7 +17,7 @@ def test_user_not_exists(github_api):
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('Testing-Framework')
-    assert r['total_count'] == 46049
+    assert r['total_count'] == 46389
     assert 'googletest' in r['items'][0]['name']
 
 
@@ -46,20 +46,20 @@ def test_emoji_exists(github_api):
 
 
 @pytest.mark.api
-def test_commits_for_repo_exists(github_api):
+def test_commit_for_repo_exists(github_api):
     body = github_api.get_repo_commits('sadkoldun', 'testing-framework')
     assert len(body) > 0
 
 
 @pytest.mark.api
-def test_commits_exists_in_html(github_api):
+def test_commit_exists_in_html(github_api):
     body = github_api.get_repo_commits('sadkoldun', 'testing-framework')
     commit_html = requests.get(body[0]["html_url"])
     assert commit_html.status_code == 200
 
 
 @pytest.mark.api
-def test_commits_if_user_not_exists(github_api):
+def test_commit_if_user_not_exists(github_api):
     body = github_api.get_repo_commits('akguzdfo', 'testing-framework')
 
     assert body["message"] == "Not Found"

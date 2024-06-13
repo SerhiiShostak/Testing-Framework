@@ -44,6 +44,9 @@ jobs:
       - name: database
         if: "github.event.inputs.deployment_target == 'database'"
         run: pytest -v -m database
+      - name: database
+        if: "github.event.inputs.deployment_target == 'ui'"
+        run: pytest -v -m ui
       - name: all
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest -v
