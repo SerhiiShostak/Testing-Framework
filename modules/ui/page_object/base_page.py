@@ -14,5 +14,8 @@ class BasePage:
             service=Service(ChromeDriverManager().install()), options=BasePage.options
         )
 
+    def get_name_of_tab(self):
+        return self.driver.title
+
     def close(self):
         self.driver.close()
