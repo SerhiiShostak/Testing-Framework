@@ -1,7 +1,7 @@
 import requests
 
 
-# Class for comparison with PageObject realization
+# Class with functions for GitHub API
 class GitHub:
 
     def get_user(self, username):

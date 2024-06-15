@@ -5,9 +5,11 @@ import pytest
 
 @pytest.mark.rozetka
 def test_laptops_tab_name():
+    check_tab_name = "ноутбуки"
     laptops_page = RozetkaLaptopsPage()
     laptops_page.go_to()
-    assert "Ноутбуки".lower() in laptops_page.get_name_of_tab().lower()
+    assert check_tab_name in laptops_page.get_tab_name().lower()
+    laptops_page.close()
 
 
 @pytest.mark.rozetka
@@ -45,3 +47,4 @@ def test_check_search_results():
     search_result = search_page.search_product(search_request)
 
     assert search_request in search_result.lower()
+    search_page.close()

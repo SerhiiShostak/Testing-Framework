@@ -6,7 +6,7 @@ class SignInPage(BasePage):
     URL = "https://github.com/login"
 
     def __init__(self):
-        super().__init__()
+        super().__init__(BasePage.options)
 
     def go_to(self):
         self.driver.get(SignInPage.URL)
@@ -22,4 +22,4 @@ class SignInPage(BasePage):
         sign_in_button.click()
 
     def check_title(self, expected_title):
-        return self.driver.title == expected_title
+        return self.get_tab_name() == expected_title

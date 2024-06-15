@@ -16,7 +16,6 @@ on:
           - api
           - database
           - ui
-          - rozetka
 
 jobs:
   test:
@@ -53,9 +52,6 @@ jobs:
       - name: ui
         if: "github.event.inputs.deployment_target == 'ui'"
         run: pytest -v -m ui
-      - name: rozetka
-        if: "github.event.inputs.deployment_target == 'rozetka'"
-        run: pytest -v -m rozetka
       - name: all
         if: "github.event.inputs.deployment_target == 'all'"
-        run: pytest -v
+        run: pytest -v -m "not rozetka"

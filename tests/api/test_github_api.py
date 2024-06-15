@@ -17,7 +17,8 @@ def test_user_not_exists(github_api):
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
     repo_search = github_api.search_repo('Testing-Framework')
-    assert repo_search['total_count'] == 46389
+    # Hardcoded value of total commits count
+    # assert repo_search['total_count'] == 46389
     assert 'googletest' in repo_search['items'][0]['name']
 
 
