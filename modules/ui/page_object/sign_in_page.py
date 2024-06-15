@@ -1,12 +1,13 @@
 from modules.ui.page_object.base_page import BasePage
 from selenium.webdriver.common.by import By
+from config.config import options
 
 
 class SignInPage(BasePage):
     URL = "https://github.com/login"
 
     def __init__(self):
-        super().__init__(BasePage.options)
+        super().__init__(options)
 
     def go_to(self):
         self.driver.get(SignInPage.URL)
