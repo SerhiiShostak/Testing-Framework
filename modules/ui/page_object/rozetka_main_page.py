@@ -15,6 +15,10 @@ class RozetkaMainPage(BasePage):
         self.driver.get(RozetkaMainPage.URL)
 
     def search_product(self, search_request):
+        """
+        Returns "result for [search_request]" string, if search_request isn't catalog name
+        Otherwise, opens [search_request] catalog page and returns the tab name
+        """
         search_field = WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located(
                             (By.NAME, "search")

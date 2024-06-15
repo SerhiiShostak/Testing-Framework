@@ -1,6 +1,7 @@
 import requests
 
 
+# Class for comparison with PageObject realization
 class GitHub:
 
     def get_user(self, username):

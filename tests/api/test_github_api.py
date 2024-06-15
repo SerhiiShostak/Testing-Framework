@@ -10,56 +10,56 @@ def test_user_exists(github_api):
 
 @pytest.mark.api
 def test_user_not_exists(github_api):
-    r = github_api.get_user("alkurjdhvnfmdcy")
-    assert r["message"] == "Not Found"
+    user = github_api.get_user("alkurjdhvnfmdcy")
+    assert user["message"] == "Not Found"
 
 
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
-    r = github_api.search_repo('Testing-Framework')
-    assert r['total_count'] == 46389
-    assert 'googletest' in r['items'][0]['name']
+    repo_search = github_api.search_repo('Testing-Framework')
+    assert repo_search['total_count'] == 46389
+    assert 'googletest' in repo_search['items'][0]['name']
 
 
 @pytest.mark.api
 def test_repo_cannot_be_found(github_api):
-    r = github_api.search_repo('kidsfyxnjnmwuhcy')
-    assert r['total_count'] == 0
+    repo_search = github_api.search_repo('kidsfyxnjnmwuhcy')
+    assert repo_search['total_count'] == 0
 
 
 @pytest.mark.api
 def test_repo_with_single_char_can_be_found(github_api):
-    r = github_api.search_repo('j')
-    assert r['total_count'] != 0
+    repo_search = github_api.search_repo('j')
+    assert repo_search['total_count'] != 0
 
 
 @pytest.mark.api
 def test_list_of_emoji_available(github_api):
-    r = github_api.get_emoji_list()
-    assert r.status_code == 200
+    emoji_list = github_api.get_emoji_list()
+    assert emoji_list.status_code == 200
 
 
 @pytest.mark.api
 def test_emoji_exists(github_api):
-    r = github_api.get_emoji_list().json()
-    assert "arrow_right" in r
+    emoji_list = github_api.get_emoji_list().json()
+    assert "arrow_right" in emoji_list
 
 
 @pytest.mark.api
 def test_commit_for_repo_exists(github_api):
-    body = github_api.get_repo_commits('sadkoldun', 'testing-framework')
-    assert len(body) > 0
+    commits = github_api.get_repo_commits('sadkoldun', 'testing-framework')
+    assert len(commits) > 0
 
 
 @pytest.mark.api
 def test_commit_exists_in_html(github_api):
-    body = github_api.get_repo_commits('sadkoldun', 'testing-framework')
-    commit_html = requests.get(body[0]["html_url"])
+    commits = github_api.get_repo_commits('sadkoldun', 'testing-framework')
+    commit_html = requests.get(commits[0]["html_url"])
     assert commit_html.status_code == 200
 
 
 @pytest.mark.api
 def test_commit_if_user_not_exists(github_api):
-    body = github_api.get_repo_commits('akguzdfo', 'testing-framework')
+    commits = github_api.get_repo_commits('akguzdfo', 'testing-framework')
 
-    assert body["message"] == "Not Found"
+    assert commits["message"] == "Not Found"

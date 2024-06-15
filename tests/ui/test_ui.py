@@ -9,8 +9,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.mark.ui
 def test_check_incorrect_username():
+    # Headless parameter uses for GitHub Actions
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
+
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=options
     )

@@ -7,6 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 class BasePage:
 
     options = webdriver.ChromeOptions()
+
+    # Headless parameter uses for GitHub Actions
     options.add_argument('headless')
 
     def __init__(self):

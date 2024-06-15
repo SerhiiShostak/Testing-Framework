@@ -73,4 +73,3 @@ class DataBase:
         record = self.cursor.fetchall()
 
         return record
-

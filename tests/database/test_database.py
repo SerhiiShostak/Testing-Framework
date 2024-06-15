@@ -5,7 +5,7 @@ import pytest
 
 @pytest.mark.database
 def test_database_connection(db):
-    db.test_connection()
+    assert db.test_connection()
 
 
 @pytest.mark.database
