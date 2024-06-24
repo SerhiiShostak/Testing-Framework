@@ -25,6 +25,12 @@ Go to the project directory
   cd Testing-Framework
 ```
 
+Install dependencies
+
+```bash
+  pip install -r requirements.txt
+```
+
 Run tests
 ```bash
   pytest -m [mark]
