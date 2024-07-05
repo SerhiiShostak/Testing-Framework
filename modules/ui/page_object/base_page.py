@@ -11,6 +11,9 @@ class BasePage:
             service=Service(ChromeDriverManager().install()), options=options
         )
 
+    def go_to(self):
+        pass
+
     def get_tab_name(self):
         return self.driver.title
 
