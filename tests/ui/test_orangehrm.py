@@ -1,3 +1,5 @@
+import random
+
 from modules.ui.page_object.orangehrm_login_page import OrangeHRMLoginPage
 from modules.ui.page_object.orangehrm_profile_page import OrangeHRMProfilePage
 import pytest
@@ -16,9 +18,9 @@ def test_check_login():
 
 @pytest.mark.orangehrm
 def test_check_name_changing():
-    first_name = 'test_first55'
-    middle_name = 'test_middle55'
-    last_name = 'test_last55'
+    first_name = random.randint(10000, 99999)
+    middle_name = random.randint(10000, 99999)
+    last_name = random.randint(10000, 99999)
 
     orangehrm_page = OrangeHRMProfilePage()
     orangehrm_page.go_to()
