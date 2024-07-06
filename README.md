@@ -9,6 +9,7 @@ Technologies used:
 
 Created tests for:
 - `Rozetka.com.ua`
+- `opensource-demo.orangehrmlive.com`
 - `GitHub API`
 - `Database testing (SQLite 3)`
 
@@ -44,6 +45,7 @@ Available marks:
 - `database`: Test that check DataBase
 - `ui`: Test that check User Interface
 - `rozetka`: Tests that check Rozetka.com.ua
+- `orangehrm`: Tests that check OrangeHRM demo version
 
 ## Project structure
 - `config`: config file
