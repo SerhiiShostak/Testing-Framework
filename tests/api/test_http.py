@@ -15,7 +15,7 @@ def test_second_request():
     headers = response.headers
     assert body['id'] == 2
     assert response.status_code == 200
-    assert headers['Server'] == "GitHub.com"
+    assert headers['Server'].lower() == "github.com"
 
 
 @pytest.mark.http

@@ -1,7 +1,7 @@
 import random
 
-from modules.ui.page_object.orangehrm_login_page import OrangeHRMLoginPage
-from modules.ui.page_object.orangehrm_profile_page import OrangeHRMProfilePage
+from modules.ui.page_object.orangehrm.orangehrm_login_page import OrangeHRMLoginPage
+from modules.ui.page_object.orangehrm.orangehrm_profile_page import OrangeHRMProfilePage
 import pytest
 
 

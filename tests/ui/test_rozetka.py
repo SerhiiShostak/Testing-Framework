@@ -1,5 +1,5 @@
-from modules.ui.page_object.rozetka_laptops_page import RozetkaLaptopsPage
-from modules.ui.page_object.rozetka_main_page import RozetkaMainPage
+from modules.ui.page_object.rozetka.rozetka_laptops_page import RozetkaLaptopsPage
+from modules.ui.page_object.rozetka.rozetka_main_page import RozetkaMainPage
 import pytest
 
 
@@ -48,3 +48,4 @@ def test_check_search_results():
 
     assert search_request in search_result.lower()
     search_page.close()
+

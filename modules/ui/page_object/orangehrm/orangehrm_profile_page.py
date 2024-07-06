@@ -1,10 +1,7 @@
-import time
-
-from config.config import options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from modules.ui.page_object.orangehrm_login_page import OrangeHRMLoginPage
+from modules.ui.page_object.orangehrm.orangehrm_login_page import OrangeHRMLoginPage
 from selenium.webdriver import Keys
 
 
