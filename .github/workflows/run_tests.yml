@@ -54,8 +54,8 @@ jobs:
         if: "github.event.inputs.deployment_target == 'ui'"
         run: pytest -v -m ui
       - name: OrangeHRM
-          if: "github.event.inputs.deployment_target == 'OrangeHRM'"
-          run: pytest -v -m orangehrm
+        if: "github.event.inputs.deployment_target == 'OrangeHRM'"
+        run: pytest -v -m orangehrm
       - name: all
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest -v -m "not rozetka"
