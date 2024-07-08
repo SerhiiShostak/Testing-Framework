@@ -69,39 +69,30 @@ class OrangeHRMJobTitlesPage(OrangeHRMLoginPage):
         )
         save_button.click()
 
-    def check_job(self, title_to_find='test_title'):
-        titles_list = WebDriverWait(self.driver, 10).until(
+    def check_job(self, title_to_find):
+        jobs_list = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
-                (By.CLASS_NAME, "data")
+                (By.CLASS_NAME, "oxd-table-card.--mobile")
             )
         )
-        count = 0
-        for title in titles_list:
-            if title.text.lower() == title_to_find.lower():
-                count += 1
 
-        return count == 1
+        for title in jobs_list:
+            if title_to_find.lower() in title.text.lower():
+                return title
+
+        return False
 
     def delete_job(self, title_to_delete):
-        titles_list = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_all_elements_located(
-                (By.CLASS_NAME, "data")
-            )
-        )
+        deletion_job = self.check_job(title_to_delete)
+        if deletion_job:
+            delete_button = deletion_job.find_element(By.CLASS_NAME, 'oxd-icon-button.oxd-table-cell-action-space')
+            delete_button.click()
 
-        for title in titles_list:
-            if title.text == title_to_delete:
-                for _ in range(4):
-                    title = title.find_element(By.XPATH, '..')
-                delete_button = title.find_element(By.CLASS_NAME, 'oxd-icon-button.oxd-table-cell-action-space')
-                delete_button.click()
-
-                delete_popup_button = WebDriverWait(self.driver, 10).until(
-                    EC.presence_of_element_located(
-                        (By.CLASS_NAME,
-                         "oxd-button.oxd-button--medium.oxd-button--label-danger.orangehrm-button-margin"
-                         )
-                    )
+            delete_popup_button = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (By.CLASS_NAME,
+                     "oxd-button.oxd-button--medium.oxd-button--label-danger.orangehrm-button-margin"
+                     )
                 )
-                delete_popup_button.click()
-                break
+            )
+            delete_popup_button.click()
