@@ -12,7 +12,7 @@ class OrangeHRMLoginPage(BasePage):
     DEMO_PASSWORD = 'admin123'
 
     def __init__(self):
-        super().__init__(options)
+        super().__init__()
 
     def go_to(self):
         self.driver.get(OrangeHRMLoginPage.URL)
