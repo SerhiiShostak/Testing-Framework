@@ -58,4 +58,5 @@ Available marks:
 ## GitHub Actions
 - `Test for GitHub Actions`: workflow with choices of test mark
 
-For now, `rozetka` tests are not available for GitHub actions, but it still can be launched via `python -m rozetka`
+For now, `rozetka` tests are not available for GitHub actions, but it still can be launched via `pytest -m rozetka` or 
+`pytest`
