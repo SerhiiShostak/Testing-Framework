@@ -5,7 +5,7 @@ from modules.ui.page_object.orangehrm.orangehrm_jobs_title_page import OrangeHRM
 import pytest
 
 
-# @pytest.mark.orangehrm
+@pytest.mark.orangehrm
 def test_check_login():
     orangehrm_login_page = OrangeHRMLoginPage()
     orangehrm_login_page.go_to()
@@ -16,7 +16,7 @@ def test_check_login():
     orangehrm_login_page.close()
 
 
-# @pytest.mark.orangehrm
+@pytest.mark.orangehrm
 def test_check_name_changing():
     first_name = random.randint(10000, 99999)
     middle_name = random.randint(10000, 99999)
